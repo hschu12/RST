@@ -6,7 +6,7 @@ public class Node {
 	long priority;
 	int key;
 
-	public Node (long p, int k) {
+	public Node(long p, int k) {
 		leftChild = null;
 		rightChild = null;
 		parent = null;
