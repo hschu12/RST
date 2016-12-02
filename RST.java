@@ -3,6 +3,7 @@ import java.lang.Math;
 
 public class RST {
 
+	int pointersused;
 	Node root;
 
 	public RST(){
@@ -92,20 +93,23 @@ public class RST {
 	}
 
 	public boolean find(int key) {
+		pointersused = 0;
 		Node currentNode = root;
 		while (currentNode != null) {
 			if (currentNode.key == key) {
-				System.out.println("Found");
+				//System.out.println("Found");
 				return true;
 			}
 			else if ( currentNode.key > key) {
+				pointersused++;
 				currentNode = currentNode.leftChild;
 			}
 			else {
+				pointersused++;
 				currentNode = currentNode.rightChild;
 			}	
 		}
-		System.out.println("Not found");
+		//System.out.println("Not found");
 		return false;
 	}
 
@@ -167,10 +171,6 @@ public class RST {
 	* delete the dummy node afterwards.                *
 	***************************************************/
 
-	/*
-	When tree1 is smallest left child is out of order
-	*/
-
 	public void merge(RST tree1, RST tree2) {
 		long priority = -1;
 		int key = 0;
@@ -181,7 +181,6 @@ public class RST {
 		tree2.root.parent = dummy;
 		tree1.root = dummy;
 		tree2.root = dummy;
-		traverseTree(root);
 		delete(key);
 	}
 
